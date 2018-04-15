@@ -1,1 +1,0 @@
-module.exports = {name: "JS被加载"};
