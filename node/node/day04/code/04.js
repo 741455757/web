@@ -6,6 +6,11 @@
 //fs.watch(filename[, options][, listener])
 //fs.watchFile(filename[, options], listener)
 
+// markdown文件自动转换
+
+//fs.watch(filename[, options][, listener])
+//fs.watchFile(filename[, options], listener)
+
 const fs = require("fs");
 const path = require("path");
 const marked = require( "marked" );
@@ -25,9 +30,13 @@ fs.watchFile(target, (curr, prev) => {
     fs.readFile(target, 'utf8',(err,data) => {
         if(err) throw err;
         var html = marked(data);
-        console.log(html);//只是html正文的内容
+        // console.log(html);//只是html正文的内容
+        fs.readFile(path.join(__dirname, "./gitub.css"), (err, css) => {
+            html = template.replace('{{{content}}}', html).replace('{{{styles}}}', css);
+            // console.log(html);
+            fs.writeFile(target.replace(path.extname(target),'.html') ,html ,'utf8');
+        });
         
-        fs.writeFile(target.replace('.md','.html') , template.replace('{{{content}}}', html));
     })
 });
 
@@ -37,10 +46,10 @@ var template = `
 <html>
 <head>
     <meta  content="text/html; charset=utf-8"/>
-   
+   <style>{{{styles}}}</style>
 </head>
 <body>
-   {{{content}}}
+   <div class="markdown-body">{{{content}}}</div>
 </body>
 </html>
 `;
