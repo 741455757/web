@@ -6,11 +6,6 @@
 //fs.watch(filename[, options][, listener])
 //fs.watchFile(filename[, options], listener)
 
-// markdown文件自动转换
-
-//fs.watch(filename[, options][, listener])
-//fs.watchFile(filename[, options], listener)
-
 const fs = require("fs");
 const path = require("path");
 const marked = require( "marked" );
@@ -19,7 +14,7 @@ const marked = require( "marked" );
  const target = path.join(__dirname, process.argv[2]||'./README.md');
 //  监视文件的变化
 
-fs.watchFile(target, (curr, prev) => { 
+fs.watchFile(target, {interval: 200}, (curr, prev) => { 
     // 监视文件变化，可以理解为当文件发生变化（需要保存才能触发文件变化); 观察文件不管有没有修改，只要保存都会触发这个事件
     //  console.log(`current: ${curr.size}\tprevious:${prev.size}`);
     // 判断文件到底有没有变化 修改时间
@@ -34,7 +29,9 @@ fs.watchFile(target, (curr, prev) => {
         fs.readFile(path.join(__dirname, "./gitub.css"), (err, css) => {
             html = template.replace('{{{content}}}', html).replace('{{{styles}}}', css);
             // console.log(html);
-            fs.writeFile(target.replace(path.extname(target),'.html') ,html ,'utf8');
+            fs.writeFile(target.replace(path.extname(target),'.html') ,html ,'utf8', (err) =>{
+                console.log('update' + new Date);
+            });
         });
         
     })
