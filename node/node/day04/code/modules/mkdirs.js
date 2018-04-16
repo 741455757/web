@@ -3,7 +3,7 @@ var fs = require("fs");
 var path = require("path");
 
 function mkdirs(pathname, callback){
-    // console.log(module);
+    // console.log(module)
     var root = path.dirname(module.parent.filename);
     //传入的路径是否是一个绝对路径  这是一个容易忽略的地方
     var pathname = path.isAbsolute(pathname)? path.join(pathname):path.join(root, pathname);
