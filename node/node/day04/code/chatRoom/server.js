@@ -53,6 +53,10 @@ var server = net.createServer((socket) => {
         }
        
     });
+    socket.on('error', (err) =>{
+        clients.splice(clients.indexOf(socket), 1);
+        console.log(`${socket.remoteAddress}下线 在线人数${clients.length}`);
+    })
 })
 
 var port=8080;
