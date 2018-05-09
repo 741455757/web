@@ -21,7 +21,21 @@ var server = net.createServer((socket) => {
             // 广播消息
             clients.forEach(client => {
                 client.write(JSON.stringify(send));
-            });
+            });  
+        }
+        function p2p(signal){
+            var from = signal.from;
+            var target =  signal.to;
+            var message = signal.message;
+            var send = {
+                'proctocal': signal.proctocal,
+                'from': from,
+                'to': target,
+                'message': message
+            }
+            // 点对点消息
+            clients[target].write(JSON.stringify(send));
+            
         }
     //   有任何客户端消息都会触发
         // chunk：'broadcast'|'张三'|'弄啥呢'
@@ -38,9 +52,9 @@ var server = net.createServer((socket) => {
                 case 'broadcast':
                     broadcast(signal);
                     break;
-                // case 'p2p':
-                //     p2p(signal);
-                // break;
+                case 'p2p':
+                    p2p(signal);
+                break;
                 // case 'shake':我来了
                 //     shake(signal);
                 // break;

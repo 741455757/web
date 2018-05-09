@@ -16,6 +16,7 @@ rl.question('What is your name? ', (name) => {
     }
     // 创建于服务端socket连接
     var server = net.connect({port: 8080}, () => {
+        // 登入操作
         console.log(`welcome ${name} to 8080 chatroom`);
         // 监听服务端发过来的数据
         server.on('data', (chunk) => {
@@ -29,8 +30,10 @@ rl.question('What is your name? ', (name) => {
                         console.log(signal.from+'>');
                         console.log(signal.message);
                         break;
-                    // case 'p2p':
-                    //     p2p(signal);
+                    case 'p2p':
+                    console.log('\np2p');
+                    console.log(signal.from+'>');
+                    console.log(signal.message);
                     // break;
                     // case 'shake':
                     //     shake(signal);
@@ -48,14 +51,25 @@ rl.question('What is your name? ', (name) => {
     rl.prompt();
 
     rl.on('line', (line) => {
-        var send = { 
-            'proctocal': 'broadcast',
-            'from': name,
-            'message': line.toString().trim()
-        } 
+        line = line.toString().trim();
+        var temp = line.split(":");
+        if(temp.length === 2) {
+            var send = { 
+                'proctocal': 'p2p',
+                'from': name,
+                'to': temp[0],
+                'message': temp[1]
+            } 
+        }else{
+            var send = { 
+                'proctocal': 'broadcast',
+                'from': name,
+                'message': line.toString().trim()
+            } 
+        }
         server.write(JSON.stringify(send));
         console.log(line);
-        // rl.setPrompt(name + '>');
+        rl.setPrompt(name + '>');
         rl.prompt();
     }).on('close', () => {
     // console.log('Have a great day!');
