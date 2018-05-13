@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html >
 <head lang="en">
     <meta charset="UTF-8">
 </head>
-<body> 
-    <table ng-controller="HelloController">
+<body ng-app="myApp"> 
+    <table ng-controller="HelloController" border="1">
         <tr>
             <td>用户名</td>
-            <td><input type="text" name="" ng-model="user.usermame"></td>
+            <td><input type="text" name="" ng-model="user.username"></td>
         </tr>
         <tr>
             <td>密码</td>
@@ -16,6 +16,10 @@
         <tr>
             <td></td>
             <td><input type="button" value="登录" ng-click="login()"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{message}}</td>
         </tr>
     </table>
     <script src="../bower_components/angular/angular.js"></script>
@@ -34,6 +38,8 @@
                 "username": "",
                 "password": ""
             }
+            
+            
             // 行为数据
             $scope.login=function(){
                 // 应为数据的变化是双向的同步，所以界面上的变化会同步到$scope.user上
@@ -41,7 +47,25 @@
             }
     		// angular基本不用操作dom，如果必要，可以使用angular提供的jqlite
 			//angular.element(body)
-			
+            
+            // 请输入用户名 输入格式不合法
+            $scope.message ='请输入用户名';
+            // $scope.message取决于$scope.user
+            //官方的API中提供了一个$scope.$watch方法
+			$scope.$watch('user.username', function(now,old){
+                // 此处当user.username发生变化时触发这个
+                console.log('now is'+now);
+                console.log('old is'+old);
+                // if(now){
+                //     if(now.length<7){
+                //         $scope.message ='输入格式不合法';
+                //     }else{
+                //          $scope.message ='';
+                //     }
+                // }else{
+                //     $scope.message ='请输入用户名';
+                // }
+            });
     	}])
     </script>
 </body>
