@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-show 指令</title>
+	<style>
+		.tips{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: rgba(100, 100, 100, 0.5);
+			font-size: 40px;
+			line-height: 100vh;
+			text-align: center;
+		}
+	</style>
+</head>
+<body ng-app='MyApp' ng-controller="ListController">
+	<!-- ng-show决定是否显示 ng-hide决定是否隐藏 ng-if是否存在（false是这个元素不存在了） -->
+	<!-- <div class="tips" ng-show='loading'> -->
+	<!-- <div class="tips" ng-hide='!loading'> -->
+	<div class="tips" ng-if='loading'>
+		Loading...
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		/**
+		* MyApp Module
+		*
+		* Description
+		*/
+		angular.module('MyApp', [])
+			.controller('ListController', ['$scope', '$timeout', function($scope, $timeout){
+				$scope.loading = true;
+				$timeout(function(){
+					$scope.loading = false;
+					$timeout(function(){
+						$scope.loading = true;
+					}, 3000);
+				}, 3000);
+			}])
+	</script>
+</body>
+</html>

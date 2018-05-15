@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-repeat 指令</title>
+	<style>
+		.red{
+			color: red;
+		}
+		.green{
+			color: green;
+		}
+	</style>
+</head>
+<body ng-app='myApp'>
+	<ul ng-controller="ListController">
+		<!-- ng-repeat会遍历数组中每一个元素，分别创建li -->
+		<li ng-repeat="x in data" data-id="{{x.id}}" ng-class="{red:$even,green:$odd}">
+			<strong>{{x.name}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span>{{x.age}}</span>
+		</li>
+	</ul>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		/**
+		* MyApp Module
+		*
+		* Description
+		*/
+		angular.module('myApp', [])
+			.controller('ListController',['$scope',function($scope){
+				$scope.data =[];
+				for (var i = 0; i < 10; i++) {
+					$scope.data[$scope.data.length] ={
+						'id': i,
+						'name': "女王"+i,
+						'age': 20+i
+					}
+				}
+			}])
+	</script>
+</body>
+</html>

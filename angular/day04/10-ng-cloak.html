@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-cloak 指令</title>
+	<style>
+	/* ng-colak指令就是在NG执行完毕后自动移除 */
+		[ng-cloak],.ng-cloak{display: none;}
+	</style>
+</head>
+<body ng-app ng-cloak>
+	{{'hello Angular'}}
+	<script src="bower_components/angular/angular.js"></script>
+</body>
+</html>

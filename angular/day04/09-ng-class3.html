@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-class2 指令</title>
+	<style>
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body ng-app = "myApp" ng-controller = "ListController">
+	<!-- ng-class指令的值可以是字符串，对象，或者一个数组 -->
+	<input type="text" name="" id="" ng-model="lastname">
+	<ul>
+		<li ng-repeat="name in students track by $index" ng-class="{red: name.startsWith(lastname)}">{{name}}</li>
+	</ul>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		/**
+		* myApp Module
+		*
+		* Description
+		*/
+		angular.module('myApp', [])
+			.controller('ListController', ['$scope', function($scope){
+				$scope.students=["张三","李四","王五","王五","王五"];
+			}])
+	</script>
+</body>
+</html>
