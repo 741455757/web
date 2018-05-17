@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>custom-directive自定义指令</title>
+	<link rel="stylesheet" href="bower_components/boostrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="demoApp">
+	<!-- <selfDirective></selfDirective>	这个不会奏效 -->
+	<self-Directive></self-Directive>
+	<btn-Danger></btn-Danger>
+	<btn-Success></btn-Success>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		/**
+		* demoApp Module
+		*
+		* Description
+		*/
+		var demoApp = angular.module('demoApp', []);
+		// 第一个参数是指令的名称,第二个参数仍然使用的是一个数组，数组的最后一个元素是一个函数
+		// 定义指令的名字应该使用驼峰命名法
+		demoApp.directive('selfDirective', [function(){
+			// 该函数应该返回一个指令对象
+			return {
+				template: '<input type="button" value="itcast" class="btn btn-lg btn-primary btn-block" class="selfBlock">',
+			};
+		}]);
+		demoApp.directive('btnDanger', [function(){
+			// 该函数应该返回一个指令对象
+			return {
+				template: '<input type="button" value="itcast" class="btn btn-danger " class="selfBlock">',
+			};
+		}]);
+		demoApp.directive('btnSuccess', [function(){
+			// 该函数应该返回一个指令对象
+			return {
+				template: '<input type="button" value="itcast" class="btn btn-success " class="selfBlock">',
+			};
+		}]);
+	</script>
+</body>
+</html>
