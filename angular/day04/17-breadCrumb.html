@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个面包屑导航</title>
+	<link rel="stylesheet" type="text/css" href="bower_components/boostrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="myApp" ng-controller="DemoController">
+	<breadCrumb data="{{pathData}}"></breadCrumb>
+	<breadCrumb data="{{pathData2}}"></breadCrumb>
+	<script src="bower_components/angular/angular.js"></script>
+	<script>
+		
+	var myApp=angular.module('myApp', []);
+	myApp.controller('DemoController', ['$scope', function($scope){
+		$scope.pathData=['home','itcast','itheiama','bbs'];
+		$scope.pathData2=['home','Library','Data'];
+	}])
+	// 定义一个面包屑导航指令
+	myApp.directive('breadcrumb',[function(){
+		// 返回指令对象
+		return{
+			scope:{},
+			templateUrl: 'tmpls/breadcrumb2.html',
+			replace:true,
+			link: function($scope, element, attributes) {//element: breadCrumb元素
+				$scope.data = JSON.parse(attributes.data);
+				console.log($scope.data);
+			}
+		}
+
+	}])
+	</script>
+</body>
+</html>
