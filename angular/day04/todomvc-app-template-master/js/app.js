@@ -31,6 +31,9 @@
 		];
 		// 添加todo
 		$scope.add =function(){
+			if(!$scope.text){
+				return;
+			}
 			$scope.todos.push({
 				// 自动增长
 				id: getId(),
@@ -81,6 +84,22 @@
 		$scope.save = function(){
 			$scope.currentEditingId = -1;
 		}
+
+		// $scope.checkall = false;
+		// $scope.$watch('checkall', function(now, old) {
+		// 	for (var i = 0; i < $scope.todos.length; i++) {
+		// 		$scope.todos[i].completed = now;
+				
+		// 	}
+			
+		// });
+		var now = false;
+		$scope.checkall = function(){
+			for (var i = 0; i < $scope.todos.length; i++) {
+				$scope.todos[i].completed = now;
+			}
+			now =!now;
+		} 
 	}])
 
 	
