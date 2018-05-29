@@ -25,9 +25,9 @@
 		// 任务列表也需要一个
 		// 每一个任务的结构{id:1,text:'学习',completed:true}
 		$scope.todos = [
-		{id:0.123,text:'学习',completed:false},
-		{id:0.222,text:'睡觉',completed:false},
-		{id:0.34,text:'打豆豆',completed:true}
+		{id:0.123,text:'学习',completed:false,editing:false},
+		{id:0.222,text:'睡觉',completed:false,editing:false},
+		{id:0.34,text:'打豆豆',completed:true,editing:false}
 		];
 		// 添加todo
 		$scope.add =function(){
@@ -36,7 +36,8 @@
 				id: getId(),
 				// 由于$scope.text是双向绑定的，add同时肯定可以同时拿到界面上的输入值
 				text: $scope.text,
-				completed:false}) ;
+				completed:false,
+				editing:false}) ;
 			// 清空文本框
 			$scope.text = '';
 		}
@@ -69,6 +70,16 @@
 				}
 			}
 			return false;
+		}
+
+		// 当前编辑哪个元素
+		$scope.currentEditingId = -1;
+		$scope.editing = function(id) {
+			$scope.currentEditingId = id;
+		}
+
+		$scope.save = function(){
+			$scope.currentEditingId = -1;
 		}
 	}])
 
