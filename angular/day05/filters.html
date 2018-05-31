@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表筛选</title>
+</head>
+<body ng-app="MyApp">
+	<div ng-controller="ListController">
+		<ul>
+			<li ng-repeat="todo in todos|filter:{completed:true}">
+				<span>{{todo.id}}</span>
+				<strong>{{todo.text}}</strong>
+				<span>{{todo.completed}}</span>
+				<span>{{todo.editing}}</span>
+			</li>
+		</ul>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="angular-locale_zh-cn.js"></script>
+	<script>
+		/**
+		* MyApp Module
+		*
+		* Description
+		*/
+		angular.module('MyApp', [])
+			.controller('ListController',['$scope',function($scope){
+				$scope.todos = [
+					{id:0.123,text:'学习',completed:false,editing:false},
+					{id:0.222,text:'睡觉',completed:false,editing:false},
+					{id:0.34,text:'打豆豆',completed:true,editing:false}
+				];
+			}])
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>filter</title>
+</head>
+<body ng-app="myApp">
+	<!-- <h1>{{10000000 | currency}}</h1>
+	<h1>{{1527691350996|date}}</h1>
+	<h1>{{1527691350996|date:'yyyy-MM-dd HH:mm:ss'}}</h1>
+	<h1>{{1527691350996|date:'fullDate'}}</h1> -->
+	<div ng-controller="DemoController">
+		<input type="text" name="" id="" ng-model="p1.name">
+		<pre>
+		{{p1|json:8}}
+		</pre>
+		<!-- 
+		<br>
+		{{p1}} -->
+		<div>
+			<p>{{'itcast.cn,itcast1.com,itcast1.com'|limitTo : 10:10 }}</p>
+		</div>
+		<p>{{text}}</p>
+		<h1>{{3.1415926|number:10}}</h1>
+	</div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="angular-locale_zh-cn.js"></script>
+	<script>
+		/**
+		* myApp Module
+		*
+		* Description
+		*/
+		angular.module('myApp', [])
+			.controller("DemoController",['$scope','$filter',function($scope,$filter){
+				$scope.p1={
+					name: '张三',
+					age: 19,
+					gender:false,
+					zhengfang:{
+						name: '张三',
+						age: 19,
+						gender:false
+					},
+					ceshi:[{
+						name: '张三',
+						age: 19,
+						gender:false
+					},{
+						name: '张三1',
+						age: 19,
+						gender:false
+					},{
+						name: '张三2',
+						age: 19,
+						gender:false
+					}]
+				}
+
+				// 如果在控制器中需要用到一个不存在的对象，都尝试使用注入的方式
+				$scope.text=$filter('limitTo')('hahahhhahahahahah', 10, 5);
+			}])
+	</script>
+</body>
+</html>
