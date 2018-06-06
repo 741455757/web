@@ -8,7 +8,7 @@
 	*/
 	var myapp = angular.module('myTodoMvc', [])
 	// 注册一个主要的控制器
-	myapp.controller('MainController', ['$scope', function($scope){
+	myapp.controller('MainController', ['$scope', '$location', function($scope,$location){
 		function getId(){
 			var id = Math.random();
 			for (var i = 0; i < $scope.todos.length; i++) {
@@ -100,8 +100,38 @@
 			}
 			now =!now;
 		} 
-	}])
+		// 让$scope也有一个指向location的数据成员
+		// $watch只能监视属于$scope的成员
+		$scope.$location = $location;
+		$scope.$watch('$location.path()', function(now, old) {
+			// 状态筛选
+			// $scope.selector = {completed:false};// {},{completed:false},{completed:true}
+			// 点击事件的方式不合适，有dom操作
+			
+			// 1.拿到锚点值
+			// 这样写就要求执行环境必须要有window对象
+			// var hash= window.location.hash;
+			// console.log($location);
+			// var path = $location.path();
+			// 2.根据锚点值对selector做变化
+			switch(now){
+				case '/active':
+				$scope.selector = {completed:false};
+				break;
+				case '/completed':
+				$scope.selector = {completed:true};
+				break;
+				default:
+				$scope.selector = {};
+				break
+			}
+		});
 
+
+
+		
+	}])
+	
 	
 	
 
