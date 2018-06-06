@@ -126,7 +126,12 @@
 				break
 			}
 		});
-
+		//自定义比较函数
+		$scope.equalCompare = function(source, target){
+			console.log("sourse。。"+source);
+			console.log("target。。"+target);
+			return source===target;
+		}
 
 
 		
