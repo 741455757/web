@@ -6,7 +6,10 @@
 	* Description
 	* 应用程序的主模块
 	*/
-	var myapp = angular.module('myTodoMvc', [])
+	var myapp = angular.module('myTodoMvc', ['ngRoute'])
+	// 漏油配置
+	// $routeProvider
+
 	// 注册一个主要的控制器
 	myapp.controller('MainController', ['$scope', '$location', function($scope,$location){
 		function getId(){
