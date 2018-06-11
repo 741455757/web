@@ -9,9 +9,19 @@
 	var myapp = angular.module('myTodoMvc', ['ngRoute'])
 	// 漏油配置
 	// $routeProvider
-
-	// 注册一个主要的控制器
-	myapp.controller('MainController', ['$scope', '$location', function($scope,$location){
+	myapp.config(['$routeProvider',function($routeProvider) {
+			$routeProvider
+			.when('/:status?',{
+				controller: 'MainController',
+				templateUrl:'main_tmpl'
+			 })
+			// 别的请求
+			.otherwise({
+				// 跳转到一个地址
+					redirectTo:'/'
+			});
+	}]);
+	myapp.controller('MainController', ['$scope', '$routeParams','$route', function($scope,$routeParams,$route){
 		function getId(){
 			var id = Math.random();
 			for (var i = 0; i < $scope.todos.length; i++) {
@@ -103,32 +113,27 @@
 			}
 			now =!now;
 		} 
-		// 让$scope也有一个指向location的数据成员
-		// $watch只能监视属于$scope的成员
-		$scope.$location = $location;
-		$scope.$watch('$location.path()', function(now, old) {
-			// 状态筛选
-			// $scope.selector = {completed:false};// {},{completed:false},{completed:true}
-			// 点击事件的方式不合适，有dom操作
-			
-			// 1.拿到锚点值
-			// 这样写就要求执行环境必须要有window对象
-			// var hash= window.location.hash;
-			// console.log($location);
-			// var path = $location.path();
-			// 2.根据锚点值对selector做变化
-			switch(now){
-				case '/active':
-				$scope.selector = {completed:false};
-				break;
-				case '/completed':
-				$scope.selector = {completed:true};
-				break;
-				default:
-				$scope.selector = {};
-				break
-			}
-		});
+		// 状态筛选
+		// $scope.selector = {completed:false};// {},{completed:false},{completed:true}
+		// 点击事件的方式不合适，有dom操作
+		
+		// 1.拿到锚点值
+		// 这样写就要求执行环境必须要有window对象
+		$scope.selector = {};
+		// 2.根据锚点值对selector做变化
+		var status = $routeParams.status;
+		switch(status){
+			case 'active':
+			$scope.selector = {completed:false};
+			break;
+			case 'completed':
+			$scope.selector = {completed:true};
+			break;
+			default:
+			$route.updateParams({status:''})
+			$scope.selector = {};
+			break
+		}
 		//自定义比较函数
 		$scope.equalCompare = function(source, target){
 			// console.log("sourse。。"+source);
@@ -136,9 +141,8 @@
 			return source===target;
 		}
 
-
 		
-	}])
+	}]);
 	
 	
 	
