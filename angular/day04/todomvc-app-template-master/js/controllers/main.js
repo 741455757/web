@@ -2,7 +2,7 @@
 * @Author: Jessica Wang
 * @Date:   2018-06-11 22:16:39
 * @Last Modified by:   Jessica Wang
-* @Last Modified time: 2018-06-12 08:09:33
+* @Last Modified time: 2018-06-12 23:19:09
 */
 (function(angular){
 	'use strict';
@@ -12,35 +12,36 @@
 	 '$scope',
 	 '$routeParams',
 	 '$route',
-	 '$MainService', 
-	 function($scope,$routeParams,$route,$MainService){
+	 'MainService', 
+	 function($scope,$routeParams,$route,MainService){
 		//文本框需要一个模型
 		$scope.text='';
 		// 任务列表也需要一个
 		// 每一个任务的结构{id:1,text:'学习',completed:true}
 		// 添加todo
-	    $scope.todos = $MainService.get();
+	    $scope.todos = MainService.get();
 		$scope.add =function(){
 			if(!$scope.text){
 				return;
 			}
-			$MainService.add($scope.text);
+			MainService.add($scope.text);
 			// 清空文本框
 			$scope.text = '';
 		}
 		// 处理删除
 		$scope.remove = function(id){
 			// 删除谁
-			$MainService.remove(id);
+			MainService.remove(id);
 
 		}
 		// 清空已完成
 		$scope.clear= function(){
-			$MainService.clearCompleted();
+			var newTodos = MainService.clearCompleted();
+			$scope.todos = newTodos;
 		}
 		//是否已经有完成的
 		$scope.existCompleted = function(){
-			$MainService.existCompleted();
+			return MainService.existCompleted();
 		}
 
 		// 当前编辑哪个元素
@@ -63,7 +64,7 @@
 		// });
 		var now = false;
 		$scope.checkall = function(){
-			$MainService.checkall();
+			MainService.checkall();
 		} 
 		// 状态筛选
 		// $scope.selector = {completed:false};// {},{completed:false},{completed:true}
@@ -92,7 +93,9 @@
 			// console.log("target。。"+target);
 			return source===target;
 		}
-
+		$scope.toggle = function(){
+			MainService.save();
+		}
 		
 	}]);	
 })(angular);

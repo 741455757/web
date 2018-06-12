@@ -2,17 +2,19 @@
 * @Author: Jessica Wang
 * @Date:   2018-06-11 23:09:25
 * @Last Modified by:   Jessica Wang
-* @Last Modified time: 2018-06-12 08:08:19
+* @Last Modified time: 2018-06-12 23:15:33
 */
 (function(angular){
 	// 注册一个新模块
 	angular.module('app.services.main', [])
-		.service('MainService', [function(){
-			var tods =[
-				{id:0.123,text:'学习',completed:false,editing:false},
-				{id:0.222,text:'睡觉',completed:false,editing:false},
-				{id:0.34,text:'打豆豆',completed:true,editing:false}
-				];
+		.service('MainService', ['$window',function($window){
+			var storage = $window.localStorage;
+			var todos = storage['my_todo_List']? JSON.parse(storage['my_todo_List']):[];
+			// var todos =[
+			// 	{id:0.123,text:'学习',completed:false,editing:false},
+			// 	{id:0.222,text:'睡觉',completed:false,editing:false},
+			// 	{id:0.34,text:'打豆豆',completed:true,editing:false}
+			// 	];
 			function getId() {
 				var id = Math.random();
 				for (var i = 0; i < todos.length; i++) {
@@ -22,6 +24,9 @@
 					}
 				}
 				return id;
+			}
+			this.save = function(){
+				storage['my_todo_List'] = JSON.stringify(todos);
 			}
 			// 控制私有字段的访问权限{即代码结构的访问权限}
 			this.get = function(){
@@ -37,6 +42,7 @@
 				text: text,
 				completed:false,
 				editing:false}) ;
+				this.save();
 			}
 			// 处理删除
 			this.remove = function(id){
@@ -47,6 +53,7 @@
 						break;
 					}
 				}
+				this.save();
 			}
 			// 清空已完成
 			this.clearCompleted= function(){
@@ -57,6 +64,9 @@
 					}
 				}
 				todos = result;
+				this.save();
+				// 此时我们将todos指向了一个新的地址
+				return todos;
 			}
 			//是否已经有完成的
 			this.existCompleted = function(){
@@ -70,7 +80,7 @@
 
 			// 更新
 			this.update = function(id, target){
-				
+				this.save();
 			}
 
 			var now = false;
@@ -79,6 +89,7 @@
 					todos[i].completed = now;
 				}
 				now =!now;
+				this.save();
 			} 
 		}]);
 })(angular)
