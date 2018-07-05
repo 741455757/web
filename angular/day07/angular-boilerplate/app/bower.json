@@ -1,0 +1,21 @@
+{
+  "name": "app",
+  "main": "app.js",
+  "homepage": "https://github.com/741455757/angular-boilerplate",
+  "authors": [
+    "Jessica Wang <741455757@qq.com>"
+  ],
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "script.js": "^2.5.8"
+  }
+}
