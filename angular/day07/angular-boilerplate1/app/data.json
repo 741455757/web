@@ -1,0 +1,215 @@
+{
+    "count": 3,
+    "start": 0,
+    "total": 37,
+    "subjects": [
+        {
+            "rating": {
+                "max": 10,
+                "average": 6.9,
+                "stars": "35",
+                "min": 0
+            },
+            "genres": [
+                "动作",
+                "科幻",
+                "冒险"
+            ],
+            "title": "侏罗纪世界2",
+            "casts": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1017967/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1408711300.32.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1408711300.32.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1408711300.32.jpg"
+                    },
+                    "name": "克里斯·帕拉特",
+                    "id": "1017967"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1027772/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p315.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p315.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p315.jpg"
+                    },
+                    "name": "布莱丝·达拉斯·霍华德",
+                    "id": "1027772"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1350981/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1523860646.23.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1523860646.23.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1523860646.23.jpg"
+                    },
+                    "name": "贾斯蒂斯·史密斯",
+                    "id": "1350981"
+                }
+            ],
+            "collect_count": 123218,
+            "original_title": "Jurassic World: Fallen Kingdom",
+            "subtype": "movie",
+            "directors": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1305510/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372318484.25.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372318484.25.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372318484.25.jpg"
+                    },
+                    "name": "胡安·安东尼奥·巴亚纳",
+                    "id": "1305510"
+                }
+            ],
+            "year": "2018",
+            "images": {
+                "small": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg",
+                "large": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg",
+                "medium": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522069454.jpg"
+            },
+            "alt": "https://movie.douban.com/subject/26416062/",
+            "id": "26416062"
+        },
+        {
+            "rating": {
+                "max": 10,
+                "average": 8.2,
+                "stars": "40",
+                "min": 0
+            },
+            "genres": [
+                "喜剧",
+                "动作",
+                "动画"
+            ],
+            "title": "超人总动员2",
+            "casts": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1002721/",
+                    "avatars": {
+                        "small": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21297.jpg",
+                        "large": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21297.jpg",
+                        "medium": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21297.jpg"
+                    },
+                    "name": "格雷格·T·尼尔森",
+                    "id": "1002721"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1031838/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p48614.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p48614.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p48614.jpg"
+                    },
+                    "name": "霍利·亨特",
+                    "id": "1031838"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1186797/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529654136.33.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529654136.33.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529654136.33.jpg"
+                    },
+                    "name": "莎拉·沃威尔",
+                    "id": "1186797"
+                }
+            ],
+            "collect_count": 39864,
+            "original_title": "Incredibles 2",
+            "subtype": "movie",
+            "directors": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1027204/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529655910.45.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529655910.45.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1529655910.45.jpg"
+                    },
+                    "name": "布拉德·伯德",
+                    "id": "1027204"
+                }
+            ],
+            "year": "2018",
+            "images": {
+                "small": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522880251.jpg",
+                "large": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522880251.jpg",
+                "medium": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2522880251.jpg"
+            },
+            "alt": "https://movie.douban.com/subject/25849049/",
+            "id": "25849049"
+        },
+        {
+            "rating": {
+                "max": 10,
+                "average": 5.1,
+                "stars": "25",
+                "min": 0
+            },
+            "genres": [
+                "喜剧",
+                "动作",
+                "犯罪"
+            ],
+            "title": "龙虾刑警",
+            "casts": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1314827/",
+                    "avatars": {
+                        "small": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1445948736.67.jpg",
+                        "large": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1445948736.67.jpg",
+                        "medium": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1445948736.67.jpg"
+                    },
+                    "name": "王千源",
+                    "id": "1314827"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1316067/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372668848.86.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372668848.86.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1372668848.86.jpg"
+                    },
+                    "name": "袁姗姗",
+                    "id": "1316067"
+                },
+                {
+                    "alt": "https://movie.douban.com/celebrity/1274276/",
+                    "avatars": {
+                        "small": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1403277374.05.jpg",
+                        "large": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1403277374.05.jpg",
+                        "medium": "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1403277374.05.jpg"
+                    },
+                    "name": "刘桦",
+                    "id": "1274276"
+                }
+            ],
+            "collect_count": 3527,
+            "original_title": "龙虾刑警",
+            "subtype": "movie",
+            "directors": [
+                {
+                    "alt": "https://movie.douban.com/celebrity/1312794/",
+                    "avatars": {
+                        "small": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p38549.jpg",
+                        "large": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p38549.jpg",
+                        "medium": "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p38549.jpg"
+                    },
+                    "name": "李昕芸",
+                    "id": "1312794"
+                }
+            ],
+            "year": "2018",
+            "images": {
+                "small": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2523437806.jpg",
+                "large": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2523437806.jpg",
+                "medium": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2523437806.jpg"
+            },
+            "alt": "https://movie.douban.com/subject/26992383/",
+            "id": "26992383"
+        }
+    ],
+    "title": "正在上映的电影-北京"
+}
