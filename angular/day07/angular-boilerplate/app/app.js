@@ -7,14 +7,21 @@ angular.module('moviecat', [
   'moviecat.movie-list',
   'movieCat.directive.auto_focus',
 
-]).
-config(['$routeProvider', function($routeProvider) {
+])
+.constant('AppConfig',{
+	pageSize:10,
+	listApiAddress:'https://api.douban.com/v2/movie/',
+	detailApiAddress:'https://api.douban.com/v2/movie/subject/'
+})
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/in_theaters/1'});
 }])
 .controller('SearchController',[
 	'$scope',
 	'$route',
-	function($scope,$route){
+	'AppConfig',
+	function($scope,$route,AppConfig){
+	console.log(AppConfig);
 	$scope.input = '';//取文本框输入
 	$scope.search = function(){
 		// console.log($scope.input);

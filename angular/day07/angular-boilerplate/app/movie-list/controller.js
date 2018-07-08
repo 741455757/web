@@ -19,8 +19,9 @@
 		'$route',
 		'$routeParams',
 		'HttpService',
-		function($scope,$route,$routeParams,HttpService) {
-			var count =10;//每一页条数
+		'AppConfig',
+		function($scope,$route,$routeParams,HttpService,AppConfig) {
+			var count =AppConfig.pageSize;//每一页条数
 			var page =parseInt($routeParams.page);//页码
 			var start =(page-1)*count;//当前页从哪里开始
 		// 控制器分为2步 1.设计暴露数据 2.设计暴露行为
@@ -31,7 +32,7 @@
 		 $scope.totalPages = 0;
 		 $scope.currentPage = page;
 		 $scope.loading = true;
-		 HttpService.jsonp('https://api.douban.com/v2/movie/' + $routeParams.category,
+		 HttpService.jsonp(AppConfig.listApiAddress + $routeParams.category,
 		 	{start:start,count:count,q:$routeParams.q},
 		 	function(data){
 		 	// console.log(data);
