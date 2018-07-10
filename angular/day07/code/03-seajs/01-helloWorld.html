@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>seajs初体验</title>
+	<script src='node_modules/sea.js/sea.js'></script>
+	<script>
+		// 在Seajs中模块的引入需要相对路径完整的写法
+		// seajs.use('./01-calc.js',function(calc){
+		seajs.use('/angular/day07/code/03-seajs/01-calc.js',function(calc){//网站根目录也对
+			console.log(calc);
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= calc.add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= calc.subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= calc.multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= calc.divide(inputA.value,inputB.value);
+					break;
+				}
+		});
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+	
+</body>
+</html>
