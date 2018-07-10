@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>命名冲突</title>
+</head>
+<body>
+	<script src="tab.js"></script>
+	<script src="module.js"></script>
+	<script>
+		var module = function(){
+			console.log("i am a coder");
+		}
+		module();
+	</script>
+</body>
+</html>

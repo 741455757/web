@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模块的扩展和维护</title>
+	<script>
+		// cal.js
+		// 计算模块
+		// cal_v2015.js
+		(function (calc){
+			
+			var convert = function(input){
+				return parseFloat(input);
+			}
+			calc.add=function (a,b){
+				return convert(a)+convert(b);
+			}
+			calc.subtract=function (a,b){
+				return convert(a)-convert(b);
+			}
+			calc.multiply=function (a,b){
+				return convert(a)*convert(b);
+			}
+			calc.divide=function (a,b){
+				return convert(a)/convert(b);
+			}
+			window.calc = calc;
+		})(window.calc||{});
+		// 新增需求
+		// cal_v2016.js
+		(function(calc){
+			// calc
+			// 如果存在的话，我就是拓展，如果不存在的话，我就是新增
+			var convert = function(input){
+				return parseFloat(input);
+			}
+			calc.remain=function (a,b){
+				return convert(a)%convert(b);
+			}
+			window.calc = calc;
+		})(window.calc||{});
+		// 开闭原则，对新增的开放，对修改的关闭
+		window.onload = function(){
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= calc.add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= calc.subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= calc.multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= calc.divide(inputA.value,inputB.value);
+					break;
+					case "%":
+						inputRES.value= calc.remain(inputA.value,inputB.value);
+					break;
+
+				}
+			}
+		}
+		window.onload();
+
+		
+		
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全局函数的形式</title>
+	<script>
+		// cal.js
+		// // 计算模块
+		function add(a,b){
+			return parseInt(a)+parseInt(b);
+		}
+		function subtract(a,b){
+			return parseInt(a)-parseInt(b);
+		}
+		function multiply(a,b){
+			return parseInt(a)*parseInt(b);
+		}
+		function divide(a,b){
+			return parseInt(a)/parseInt(b);
+		}
+
+		window.onload = function(){
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= divide(inputA.value,inputB.value);
+					break;
+				}
+			}
+		}
+		window.onload();
+
+		
+		
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+</body>
+</html>

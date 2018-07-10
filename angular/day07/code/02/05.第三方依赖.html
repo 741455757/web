@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第三方依赖</title>
+	<script src="jquery.js"></script>
+	
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+	<script>
+		// cal.js
+		// 计算模块
+		// cal_v2015.js
+		(function (calc){
+			// 对全局产生依赖，不能这样用
+			console.log($);
+			var convert = function(input){
+				return parseFloat(input);
+			}
+			calc.add=function (a,b){
+				return convert(a)+convert(b);
+			}
+			calc.subtract=function (a,b){
+				return convert(a)-convert(b);
+			}
+			calc.multiply=function (a,b){
+				return convert(a)*convert(b);
+			}
+			calc.divide=function (a,b){
+				return convert(a)/convert(b);
+			}
+			window.calc = calc;
+		})(window.calc||{});
+		// 新增需求
+		// cal_v2016.js
+		(function(calc,$){
+			// 依赖函数的参数，是属于函数内部的
+			console.log($);
+			// calc
+			// 如果存在的话，我就是拓展，如果不存在的话，我就是新增
+			var convert = function(input){
+				return parseFloat(input);
+			}
+			calc.remain=function (a,b){
+				return convert(a)%convert(b);
+			}
+			window.calc = calc;
+		})(window.calc||{},jQuery);
+		// 开闭原则，对新增的开放，对修改的关闭
+		window.onload = function(){
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= calc.add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= calc.subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= calc.multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= calc.divide(inputA.value,inputB.value);
+					break;
+					case "%":
+						inputRES.value= calc.remain(inputA.value,inputB.value);
+					break;
+
+				}
+			}
+		}
+		window.onload();
+
+		
+		
+	</script>
+</body>
+</html>

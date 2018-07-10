@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装函数的方式</title>
+	<script>
+		// cal.js
+		// 计算模块
+		// var calc={
+		// 	add: function (a,b){
+		// 		return parseInt(a)+parseInt(b);
+		// 	},
+		// 	subtract: function (a,b){
+		// 		return parseInt(a)-parseInt(b);
+		// 	},
+		// 	multiply: function (a,b){
+		// 		return parseInt(a)*parseInt(b);
+		// 	},
+		// 	divide: function (a,b){
+		// 		return parseInt(a)/parseInt(b);
+		// 	}
+			
+		// }
+		//
+		var math = {};
+		var math.calc = {};
+		math.calc.add = function(a,b){
+			return a+b;
+		}
+
+		math.calc.convert= function(){
+
+		}
+		//math.calc.add();
+		//传统编程语言中的命名空间的概念
+		// 从代码层面已经有了模块化的感觉了
+		// 污染全局变量(没有问题)
+		//高内聚，低耦合
+		//模块内部相关性强，模块之间没有过多的相互牵连
+		// 没有私有空间
+
+		window.onload = function(){
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= calc.add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= calc.subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= calc.multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= calc.divide(inputA.value,inputB.value);
+					break;
+				}
+			}
+		}
+		window.onload();
+
+		
+		
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+</body>
+</html>

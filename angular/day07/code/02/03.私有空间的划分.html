@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装函数的方式</title>
+	<script>
+		// cal.js
+		// 计算模块
+		var calc = (function (){
+			// 这里形成一个单独的私有的空间
+			// var name ='';
+			// 私有成员的作用，将一个成员私有化，抽象公共方法（其他成员中都会用到的）
+			var convert = function(input){
+				return parseFloat(input);
+			}
+			function add(a,b){
+				return convert(a)+convert(b);
+			}
+			function subtract(a,b){
+				return convert(a)-convert(b);
+			}
+			function multiply(a,b){
+				return convert(a)*convert(b);
+			}
+			function divide(a,b){
+				return convert(a)/convert(b);
+			}
+			return {
+				add:add,
+				subtract:subtract,
+				multiply:multiply,
+				divide:divide
+			}
+		})();
+
+		window.onload = function(){
+			var inputA = document.getElementById("txt_a");
+			var inputB = document.getElementById("txt_b");
+			var inputRES = document.getElementById("txt_res");
+			var btn = document.getElementById("btn");
+			var op = document.getElementById("sel_op");
+			btn.onclick = function(){
+				switch(op.value){
+					case "+":
+						inputRES.value= calc.add(inputA.value,inputB.value);
+					break;
+					case "-":
+						inputRES.value= calc.subtract(inputA.value,inputB.value);
+					break;
+					case "*":
+						inputRES.value= calc.multiply(inputA.value,inputB.value);
+					break;
+					case "/":
+						inputRES.value= calc.divide(inputA.value,inputB.value);
+					break;
+				}
+			}
+		}
+		window.onload();
+
+		
+		
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+</body>
+</html>
