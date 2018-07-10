@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>seajs初体验</title>
+	<script src='node_modules/sea.js/sea.js'></script>
+	<script>
+		// 在Seajs中模块的引入需要相对路径完整的写法
+		
+		seajs.use('./03-module1.js',function(e){//网站根目录也对
+			console.log(e);
+			
+		});
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt_a">
+	<select name="" id="sel_op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="÷">÷</option>
+	</select>
+	<input type="text" name="" id="txt_b">
+	<input type="button" id="btn" value="=">
+	<input type="text" name="" id="txt_res">
+	
+</body>
+</html>
