@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="node_modules/sea.js/sea.js"></script>
+	<script>
+		seajs.config({
+			alias:{
+				//  变化点的封装
+				calc: './modules/calc.js'
+			}
+		});
+		seajs.use('calc');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
