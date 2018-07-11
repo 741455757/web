@@ -31,7 +31,7 @@
 		var preElement = document.createElement('li');
 		preElement.innerHTML = '<a href="#"aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
 		if(1== current){
-			liElement.classList.add('disabled');
+			preElement.classList.add('disabled');
 		}
 		container.appendChild(preElement);
 		for(var i=begin;i<end;i++){
@@ -46,9 +46,9 @@
 			container.appendChild(liElement);
 		}
 		var nextElement = document.createElement('li');
-		nextElement.innerHTML = '<a href="#"aria-label="Next"><span aria-hidden="true">&laquo;</span></a>';
+		nextElement.innerHTML = '<a href="#"aria-label="Next"><span aria-hidden="true">&raquo;</span></a>';
 		if(total== current){
-			liElement.classList.add('disabled');
+			nextElement.classList.add('disabled');
 		}
 		container.appendChild(nextElement);
 	</script>
