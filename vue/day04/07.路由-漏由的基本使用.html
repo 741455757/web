@@ -11,8 +11,11 @@
 </head>
 <body>
     <div id="app">
-        <a href="#/login">登录</a>
-        <a href="#/register">注册</a>
+        <!-- <a href="#/login">登录</a>
+        <a href="#/register">注册</a> -->
+        <!--router-link默认渲染为一个a标签  -->
+        <router-link to="/login" tag="span">登录</router-link>
+        <router-link to="/register">注册</router-link>
         <!-- 这是vue-router提供的元素，专门用来当做占位符的，将来，路由规则，匹配到组件，就会展示到这个router-view中去 -->
        <!-- 所以：我们可以把vue-view认为是一个占位符 -->
         <router-view></router-view>
