@@ -37,6 +37,7 @@
                 // 属性1是path，表示监听 哪个路由链接地址：
                 // 属性2是components,表示，如果 路由是前面匹配的path，则展示component属性对应的那个组件
                 // 注意：component的属性值，必须是一个组件的模板对象，不能是组件的引用名称
+                {path:'/',redirect:'/login'},//这里的redirect和Node中的redirec完全是两码事
                 {path:'/login',component:login},
                 {path:'/register',component:register}
             ]
