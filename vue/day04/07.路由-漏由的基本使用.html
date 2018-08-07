@@ -8,6 +8,16 @@
     <script src="lib/vue-2.4.0.js"></script>
     <!-- 1.vue-router.js安装漏由模块 -->
     <script src="lib/vue-router.js"></script>
+    <style>
+        .router-link-active,.myactive{
+            color:red;
+            font-weight:800;
+            font-style:italic;
+            font-size:80px;
+            text-decoration: underline;
+            background-color: green;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -40,7 +50,8 @@
                 {path:'/',redirect:'/login'},//这里的redirect和Node中的redirec完全是两码事
                 {path:'/login',component:login},
                 {path:'/register',component:register}
-            ]
+            ],
+            linkActiveClass:'myactive'
         })
         var vm = new Vue({
             el:'#app',
