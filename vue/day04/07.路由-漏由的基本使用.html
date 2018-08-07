@@ -17,6 +17,15 @@
             text-decoration: underline;
             background-color: green;
         }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition:all 0.5s ease;
+        }
     </style>
 </head>
 <body>
@@ -28,7 +37,10 @@
         <router-link to="/register">注册</router-link>
         <!-- 这是vue-router提供的元素，专门用来当做占位符的，将来，路由规则，匹配到组件，就会展示到这个router-view中去 -->
        <!-- 所以：我们可以把vue-view认为是一个占位符 -->
-        <router-view></router-view>
+       <transition mode="out-in">
+            <router-view></router-view>
+       </transition>
+        
     </div>
     <script>
         // 组件的模板对象
