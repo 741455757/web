@@ -14,6 +14,14 @@ import './css/index.css'
 // 对象身上，有个rules属性，这个rules属性是个数组；这个数组中，存放了，所有第三方文件匹配和处理规则；
 
 
+// 注意：webpack 处理第三方文件类型的过程：
+// 1.发现这个要处理的文件不是js文件，然后就去配置文件中，查找有没有对应的第三方loader规则
+// 2.如果能够找到对应的规则，就会调用对应的loader处理这种文件类型
+// 3.在调用loader的时候，是从后往前调用的
+// 4.当最后一个loader调用完毕，会把处理的结果，直接交给webpack进行打包合并，最终输出到bundle.js中去
+
+import './css/index.less'
+import './css/index.scss'
 $(function(){
     $('li:odd').css('backgroundColor', 'green');
     $('li:even').css('backgroundColor', function(){
