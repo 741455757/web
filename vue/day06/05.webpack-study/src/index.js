@@ -8,26 +8,8 @@ Vue.use(VueRouter)
 
 // 导入app组件
 import app from './App.vue'
-import account from './main/Account.vue'
-import goodslist from './main/GoodsList.vue'
-// 导入Account的两个子组件
-import login from './subcom/login.vue'
-import register from './subcom/register.vue'
-// 3.创建漏由对象
-var router = new VueRouter({
-    routes:[
-        //account goodslist
-        {
-            path:'/account',
-            component:account,
-            children:[
-                {path:'login',component:login},
-                {path:'register',component:register}
-            ]
-        },
-        {path:'/goodslist',component:goodslist},
-    ]
-})
+import router from './router.js'
+
 var vm = new Vue({
     el:"#app",
     render:function(createElements){//renter 会把el指定的容器中，所有都清空覆盖，所有不要把路由router-view和router-link直接写到el所控制的元素中
