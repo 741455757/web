@@ -38,6 +38,7 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "babel-plugin-component": "^1.1.1"
+    "babel-plugin-component": "^1.1.1",
+    "vue-resource": "^1.5.1"
   }
 }

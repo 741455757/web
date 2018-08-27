@@ -4,13 +4,20 @@ import VueRouter from 'vue-router'
 // 1.2安装路由
 Vue.use(VueRouter)
 
+// 2.1导入vue-resource 
+import VueResource from 'vue-resource'
+// 2.2安装vue-resource 
+Vue.use(VueResource)
+
 // 导入MUI样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 // 按需导入mint-ui组件
-import { Header } from 'mint-ui';
+import { Header,Swipe, SwipeItem } from 'mint-ui';
 // import 'mint-ui/lib/Header/style.css';
 Vue.component(Header.name, Header);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 // 1.3导入自己的router.js漏油模块
 import router from './router.js'
