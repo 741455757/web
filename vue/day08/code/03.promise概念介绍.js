@@ -20,3 +20,17 @@
 // var promise = new Promise(function(){
 //     // 这个function 内部写的就是具体的异步操作
 // })
+
+const fs = require('fs');
+function getFileByPath(fpath){
+    // 每当new一个Promise实例的时候，就会立即执行这个异步操作中的代码
+    var promise = new Promise(function(){
+        fs.readFile(fpath,'utf-8',(err, dataStr)=>{
+            if(err) throw err
+            console.log(dataStr);
+        })
+    })
+}
+getFileByPath('./files/1.txt');
+
+
