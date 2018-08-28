@@ -22,15 +22,25 @@
 // })
 
 const fs = require('fs');
+// 初衷：给路径，返回读取到的内容
 function getFileByPath(fpath){
     // 每当new一个Promise实例的时候，就会立即执行这个异步操作中的代码
-    var promise = new Promise(function(){
+    var promise = new Promise(function(resolve, reject){
         fs.readFile(fpath,'utf-8',(err, dataStr)=>{
-            if(err) throw err
-            console.log(dataStr);
+            // if(err) throw err
+            // console.log(dataStr);
+            if(err) return reject(err);
+            resolve(dataStr);
         })
     })
+
+    return promise;
 }
-getFileByPath('./files/1.txt');
+var p = getFileByPath('./files/1.txt');
+p.then(function(data){
+    console.log(data+'---');
+},function(err){
+    console.log(err.message);
+})
 
 
