@@ -11,6 +11,13 @@ Vue.use(VueResource)
 // 设置请求的根路径
 // Vue.http.option.root='https://api.douban.com';
 
+// 导入格式化时间插件
+import moment from 'moment'
+// 定义全局的过滤器
+Vue.filter('dataFormat', function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+   return moment(dataStr).format(pattern);
+})
+
 // 导入MUI样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'

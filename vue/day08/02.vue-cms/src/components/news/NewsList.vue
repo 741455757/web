@@ -7,14 +7,14 @@
 						<div class="mui-media-body">
                             <h1>{{item.title}}</h1>
 							<p class='mui-ellipsis'>
-                                <span>发表时间: 2012-12 12:12:12</span>
+                                <span>发表时间:{{item.year|dataFormat}}</span>
                                 <span>点击：0次</span>
                             </p>
 						</div>
 					</a>
 				</li>
 			</ul>
-        <h1> 新闻列表</h1>
+        <!-- <h1> 新闻列表</h1> -->
     </div>
 </template>
 <script>
@@ -30,7 +30,7 @@
         methods:{
             getNewsList(){
                 // 获取新闻列表
-                this.$http.jsonp("https://api.douban.com/v2/movie/in_theaters",{params:{count:2}}).then(res=>{
+                this.$http.jsonp("https://api.douban.com/v2/movie/in_theaters",{params:{count:20}}).then(res=>{
                     //  console.log(res.body.subjects);
                     this.newsList = res.body.subjects;
                 })
