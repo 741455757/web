@@ -1,11 +1,11 @@
 <template>
     <div>
         <ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id">
 					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="https://avatars1.githubusercontent.com/u/19582642?s=40&v=4">
+						<img class="mui-media-object mui-pull-left" :src="item.images.small">
 						<div class="mui-media-body">
-                            <h1>幸福</h1>
+                            <h1>{{item.title}}</h1>
 							<p class='mui-ellipsis'>
                                 <span>发表时间: 2012-12 12:12:12</span>
                                 <span>点击：0次</span>
@@ -18,7 +18,25 @@
     </div>
 </template>
 <script>
-    
+    export default {
+        data(){
+            return {
+                newsList:[]
+            }
+        },
+        created(){
+            this.getNewsList()
+        },
+        methods:{
+            getNewsList(){
+                // 获取新闻列表
+                this.$http.jsonp("https://api.douban.com/v2/movie/in_theaters",{params:{count:2}}).then(res=>{
+                    //  console.log(res.body.subjects);
+                    this.newsList = res.body.subjects;
+                })
+            }
+        }
+    }
 </script>
 <style lang="scss" scoped>
     .mui-table-view{
