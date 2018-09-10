@@ -86,3 +86,4 @@ mui('.mui-scroll-wrapper').scroll({
     + 最终，我们选择 plan B移除严格模式；使用这个插件
     babel-plugin-transform-remove-strict-mode
     5. 刚进入 图片分享页面的时候，滑动条无法正常工作，经过我们认真的分析，发现，如果要初始化 滑动条，必须等DOM元素加载完毕，所以，我们把初始化 滑动条的代码，搬到了mounted生命周期函数中
+    6. 当滑动条 调试ok后， 发现，tabbar无法正常工作了，这时候，我们需要把每个tabbar按钮的样式中`mui-tab-item`重新修改下名字；
