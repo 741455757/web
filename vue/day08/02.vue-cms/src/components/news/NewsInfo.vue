@@ -6,14 +6,18 @@
             <span>点击：0次</span>
         </p>
         <hr>
+        <!-- 内容区域 -->
         <div class="content">
-            <img :src="newsInfo.images.medium" alt="">
+            <img :src="newsInfo.images.small" alt="">
             <div v-html="newsInfo.summary"></div>
         </div>
+        <!-- 评论区域 -->
+        <comment-box :id="this.id"></comment-box>
         <!-- <h1> 新闻详情页--{{id}}</h1> -->
     </div>
 </template>
 <script>
+import comment from '../../components/subcomponents/comment.vue'
     export default {
         data(){
             return {
@@ -31,6 +35,9 @@
                     this.newsInfo = res.body;
                 })
             }
+        },
+        components:{
+            "comment-box":comment
         }
     }
 </script>

@@ -22,11 +22,12 @@ Vue.filter('dataFormat', function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 // 按需导入mint-ui组件
-import { Header,Swipe, SwipeItem } from 'mint-ui';
+import { Header,Swipe, SwipeItem,Button } from 'mint-ui';
 // import 'mint-ui/lib/Header/style.css';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 // 1.3导入自己的router.js漏油模块
 import router from './router.js'
