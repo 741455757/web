@@ -47,4 +47,7 @@ export class AppComponent {
   get toggleAll(){
     return this.todos.every(t => t.done);
   }
+  set toggleAll(val){
+    this.todos.forEach(t => t.done = val)
+  }
 }
