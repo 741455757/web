@@ -7,11 +7,11 @@ const todos= [{
 },{
   id:2,
   title:'碎觉',
-  done:true
+  done:false
 },{
   id:3,
   title:'打豆豆',
-  done:true
+  done:false
 }]
 @Component({
   selector: 'app-root',
