@@ -43,4 +43,8 @@ export class AppComponent {
     e.target.value ='';
     console.log(this.todos);
   }
+
+  get toggleAll(){
+    return this.todos.every(t => t.done);
+  }
 }
