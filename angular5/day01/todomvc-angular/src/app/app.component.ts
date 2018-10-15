@@ -50,4 +50,8 @@ export class AppComponent {
   set toggleAll(val){
     this.todos.forEach(t => t.done = val)
   }
+  removeTodo(index: number){
+    // console.log(index);
+    this.todos.splice(index,1);
+  }
 }

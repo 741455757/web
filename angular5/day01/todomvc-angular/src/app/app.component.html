@@ -28,7 +28,7 @@
           编辑状态 editing
        -->
       <li  
-        *ngFor="let todo of todos"
+        *ngFor="let todo of todos;let i = index;"
         [ngClass]="{completed:todo.done}"
         >
         <div class="view">
@@ -37,7 +37,9 @@
             type="checkbox" 
            [(ngModel)]="todo.done">
           <label>{{todo.title}}</label>
-          <button class="destroy"></button>
+          <button 
+            class="destroy"
+            (click)=removeTodo(i)></button>
         </div>
         <input class="edit" value="Create a TodoMVC template">
       </li>
