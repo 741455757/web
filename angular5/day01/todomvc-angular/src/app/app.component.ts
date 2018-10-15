@@ -79,4 +79,7 @@ export class AppComponent {
   get remainingCount(){
     return this.todos.filter(t => !t.done).length;
   }
+  clearAllDone(){
+    this.todos = this.todos.filter(t => !t.done);
+  }
 }
