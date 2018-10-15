@@ -47,7 +47,9 @@
         <input 
           class="edit"
           [value]="todo.title"
-          (blur)="currentEditing=null"
+          (keyup)="handleEditKeyUp($event)"
+          (keyup.enter)="saveEdit(todo,$event)"
+          (blur)="saveEdit(todo,$event)"
           >
       </li>
     </ul>

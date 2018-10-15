@@ -59,4 +59,21 @@ export class AppComponent {
     // console.log(index);
     this.todos.splice(index,1);
   }
+  saveEdit(todo,e){
+    // 保存编辑
+    todo.title = e.target.value;
+    // 取消编辑状态
+    this.currentEditing=null;
+  }
+  handleEditKeyUp(e){
+    const {keyCode,target} = e;
+    // console.log(keyCode);
+    // console.log(e);
+    if(keyCode==27){
+      // 取消编辑状态
+      // 把文本框的值恢复为原来的值
+      target.value = this.currentEditing.title;
+      this.currentEditing=null;
+    }
+  }
 }
