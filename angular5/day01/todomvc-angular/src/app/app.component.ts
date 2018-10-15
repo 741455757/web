@@ -25,6 +25,11 @@ export class AppComponent {
     done: boolean
   }[] = todos;
 
+  public currentEditing:{
+    id: number,
+    title:string,
+    done: boolean
+  } = null;
   addTodo(e):void {
     // console.log(e.target.value);e.target dom元素
     // console.log(e.keyCode); 事件修饰符
