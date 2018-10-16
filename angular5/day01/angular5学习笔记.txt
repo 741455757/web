@@ -1,0 +1,32 @@
+4.*ngFor="let todo of todos"
+5. -TodoMVC-添加任务006
+	(keyup.enter)="func($event)"
+	func(e){
+	e.keyCode;
+	}
+	事件修饰符   enter
+7.-TodoMVC-利用双向绑定显示007
+[(ngModel)]="todo.done"
+import { NgModule } from '@angular/core';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule     // 把表单模块配置进来
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+8.-TodoMVC-处理任务项的样008
+[ngClass]="{completed:todo.done}"
+
+9.-TodoMVC-切换所有任务项009
+ [checked]="toggleAll"
+  get toggleAll(){
+    return this.todos.every(t => t.done);
+  }

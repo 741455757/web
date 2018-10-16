@@ -30,6 +30,47 @@ export class AppComponent {
     title:string,
     done: boolean
   } = null;
+
+  public visibility: string = 'active';
+
+  // 该函数是一个特殊的Angular生命周期钩子函数
+  // 它会在Angular应用初始化的时候执行一次
+  ngOnInit () {
+    window.onhashchange = () =>{
+      // 当用户点击了锚点的时候，我们需要获取当前的锚点标识
+      // 然后动态的将根组件中的visibility设置为当前点击的锚点标识
+      // console.log(this.visibility);
+      const hash = window.location.hash.substr(1);
+      switch(hash){
+        case '/':
+          this.visibility='all';
+        break;
+        case '/active':
+        this.visibility='active';
+          break;
+        case '/completed':
+          this.visibility='completed';
+        break;
+      }
+    }
+  }
+  // 实现导航切换数据过滤的功能
+  // 1.提供一个属性，该属性会根据当前点击的链接返回过滤之后的数据
+  // filterTodos
+  // 2.提供一个属性，用来存储当前点击的链接标识
+  //    visibility 字符串
+  //    all active completed
+  // 3.为链接添加事件，当点击导航链接的时候，改变
+
+  get filterTodos(){
+    if(this.visibility == 'all'){
+      return this.todos;
+    }else if(this.visibility == 'active'){
+      return this.todos.filter(t => !t.done)
+    }else if(this.visibility == 'completed'){
+      return this.todos.filter(t => t.done)
+    }
+  }
   addTodo(e):void {
     // console.log(e.target.value);e.target dom元素
     // console.log(e.keyCode); 事件修饰符
@@ -82,4 +123,5 @@ export class AppComponent {
   clearAllDone(){
     this.todos = this.todos.filter(t => !t.done);
   }
+  
 }
