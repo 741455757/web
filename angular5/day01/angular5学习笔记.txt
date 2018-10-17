@@ -30,3 +30,4 @@ import { NgModule } from '@angular/core';
   get toggleAll(){
     return this.todos.every(t => t.done);
   }
+ 10. 当Angular 组件 数据发生改变 的时候， ngDochecked 钩子函数会被触发
