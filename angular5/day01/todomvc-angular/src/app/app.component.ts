@@ -31,13 +31,19 @@ export class AppComponent {
     done: boolean
   } = null;
 
-  public visibility: string = 'active';
+  public visibility: string = 'all';
 
   // 该函数是一个特殊的Angular生命周期钩子函数
   // 它会在Angular应用初始化的时候执行一次
   ngOnInit () {
-    window.onhashchange = () =>{
-      // 当用户点击了锚点的时候，我们需要获取当前的锚点标识
+    this.hashchangeHander();
+    // 手动的指向内部的this 否则this指向window
+    window.onhashchange = this.hashchangeHander.bind(this);
+  }
+
+  hashchangeHander(){
+    console.log(this);
+    // 当用户点击了锚点的时候，我们需要获取当前的锚点标识
       // 然后动态的将根组件中的visibility设置为当前点击的锚点标识
       // console.log(this.visibility);
       const hash = window.location.hash.substr(1);
@@ -52,7 +58,6 @@ export class AppComponent {
           this.visibility='completed';
         break;
       }
-    }
   }
   // 实现导航切换数据过滤的功能
   // 1.提供一个属性，该属性会根据当前点击的链接返回过滤之后的数据
