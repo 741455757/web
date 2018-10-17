@@ -23,7 +23,7 @@ export class AppComponent {
     id: number,
     title:string,
     done: boolean
-  }[] = todos;
+  }[] = JSON.parse(window.localStorage.getItem('todos')||'[]');
 
   public currentEditing:{
     id: number,
@@ -37,12 +37,18 @@ export class AppComponent {
   // 它会在Angular应用初始化的时候执行一次
   ngOnInit () {
     this.hashchangeHander();
-    // 手动的指向内部的this 否则this指向window
+    //注意： 手动的指向内部的this 否则this指向window
     window.onhashchange = this.hashchangeHander.bind(this);
   }
 
+  // 当Angular 组件数据发生改变的时候， ngDochecked 钩子函数会被触发
+  // 我们要做的就是在这个钩子函数中去持久化存储我们的todos数据
+  ngDoCheck(){
+    // console.log('ngDoCheck');
+    window.localStorage.setItem('todos',JSON.stringify(this.todos));
+  }
   hashchangeHander(){
-    console.log(this);
+    // console.log(this);
     // 当用户点击了锚点的时候，我们需要获取当前的锚点标识
       // 然后动态的将根组件中的visibility设置为当前点击的锚点标识
       // console.log(this.visibility);
