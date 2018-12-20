@@ -24,7 +24,12 @@
                         Name:
                         <input type="text" class="form-control" v-model="name">
                     </label>
+                    <!-- 在Vue中，使用事件绑定机制，为元素指定处理函数的时候，如果加了小括号，就可以给函数传递参数了 -->
                     <input type="button" value="添加" class="btn btn-primary" @click="add">
+                    <label for="">
+                        搜索名称关键字：
+                        <input type="text" name="" id="" class="form-control" v-model="keywords">
+                    </label>
               </div>
         </div>
         
@@ -55,6 +60,7 @@
             data:{
                 id:'',
                 name: '',
+                keywords: '',//搜索的关键字
                 list:[
                     {id: 1, name: '奔驰', ctime: new Date()},
                     {id: 2, name: '宝马', ctime: new Date()}

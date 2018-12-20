@@ -31,6 +31,10 @@
         if(item.id == id) {
             return true;
         }
-    })  
+    }) 
+## 05.Vue调试工具`vue-devtools`的安装步骤和使用
+
+[Vue.js devtools - 翻墙安装方式 - 推荐](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN) 
 
 
+## 06.品牌案例-根据关键字实现数组的过滤
