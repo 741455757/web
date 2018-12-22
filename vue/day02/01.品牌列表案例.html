@@ -43,7 +43,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in list" :key="item.id">
+                <!-- 之前，v-for中的数据，都是直接从data上的list中直接渲染过来的 -->
+                <!-- 现在，定义了一个search犯法，同时，把所有的关键字，通过传参的形式，传递给了search方法 -->
+                <!-- 在search方法内部，通过执行for循环，把所有符合搜索关键字的数据，白存到一个新数组中，返回 -->
+                <tr v-for="item in search(keywords)" :key="item.id">
                     <td>{{item.id}}</td>
                     <td v-text="item.name"></td>
                     <td>{{ item.ctime }}</td>
@@ -100,6 +103,25 @@
                     console.log(index);
                     this.list.splice(index,1);
 
+                },
+                search(keywords){
+                    // var newList =[];
+                    // this.list.forEach(item => {
+                    //     if(item.name.indexOf(keywords)!=-1){
+                    //         newList.push(item);
+                    //     }
+                    // });
+                    // return newList;
+                    // 注意：forEach some filter findIndex
+                    // 都会对数组中的每一项，进行遍历，执行相关操作
+                 return this.list.filter(item => {
+                        // 注意：ES6中，为字符串提供一个新的方法，String.prototype.includes('要包含的的字符串')
+                        // 如果包含，则返回true，否则返回false
+                        // contain
+                        if (item.name.includes(keywords)) {
+                            return item;
+                        }
+                    })
                 }
             }
         })
