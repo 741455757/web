@@ -38,3 +38,9 @@
 
 
 ## 06.品牌案例-根据关键字实现数组的过滤
+注意：forEach some filter findIndex
+
+ES6中，为字符串提供一个新的方法，String.prototype.includes('要包含的的字符串')
+###2.07.过滤器-Vue中全局过滤器的基本使用
++ 1. 过滤器调用时候的格式 {{name| 过滤器的名称}}
++ 2. Vue.filter('过滤器的名称',function(){})
