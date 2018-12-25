@@ -45,3 +45,21 @@ ES6中，为字符串提供一个新的方法，String.prototype.includes('要�
 + 1. 过滤器调用时候的格式 {{name| 过滤器的名称}}
 + 2. Vue.filter('过滤器的名称',function(){})
 ### 2.08.过滤器-定义格式化时间的全局过滤器
+定义一个Vue全局的过滤器，名称叫做 msgFormat
+ Vue.filter('msgFormat', function(msg) {
+     // 字符串 replace方法，第一个参数，除了可写一个字符串之外，还可以定义一个正则
+     return msg.replace(/单纯/g, '恶魔般')
+ })
+### 2.09.过滤器-定义私有过滤器
+ var vm2 = new Vue({
+    el: '#app2',
+    data: {
+        dt: new Date()
+    },
+    filters:{//定义私有的过滤器 过滤器有两个条件 【过滤器名称和处理函数】
+    // 过滤器调用的时候，采用的是就近原则，如果私有过滤器和全局过滤器名称一致了，这时候优先调用私有过滤器
+        dateFormat:function(dateStr,pattern=""){
+        }
+    }
+
+});
