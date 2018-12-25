@@ -65,3 +65,16 @@ ES6中，为字符串提供一个新的方法，String.prototype.includes('要�
 });
 ### 2.10.字符串的padStart方法使用
 使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；
+### 2.11.自定义按键修饰符
+全部的按键别名：
+.enter
+.tab
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right
+// 自定义全局按键修饰符 
+Vue.config.keyCodes.f2=113;
