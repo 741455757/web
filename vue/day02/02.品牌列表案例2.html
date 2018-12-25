@@ -176,9 +176,9 @@
                     if(pattern.toLowerCase() === 'yyyy-mm-dd'){
                         return `${y}-${m}-${d}`;
                     }else {
-                        var hh = dt.getHours();
-                        var mm = dt.getMinutes();
-                        var dd = dt.getSeconds();
+                        var hh = dt.getHours().toString().padStart(2, '0');
+                        var mm = dt.getMinutes().toString().padStart(2, '0');
+                        var dd = dt.getSeconds().toString().padStart(2, '0');
                         return `${y}-${m}-${d} ${hh}:${mm}:${dd}~~~~~`;
                     }
                 }

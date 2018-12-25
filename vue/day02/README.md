@@ -63,3 +63,5 @@ ES6中，为字符串提供一个新的方法，String.prototype.includes('要�
     }
 
 });
+### 2.10.字符串的padStart方法使用
+使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；
