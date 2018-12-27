@@ -78,3 +78,22 @@ ES6中，为字符串提供一个新的方法，String.prototype.includes('要�
 .right
 // 自定义全局按键修饰符 
 Vue.config.keyCodes.f2=113;
+### 2.12.指令-自定义全局指令让文本框获取焦点
+// 使用 Vue.directive()定义全局的指令 v-focus
+// 其中：参数1：指令的名称，注意，在定义的时候，指令的名称前面，不需要加v-前缀
+// 但是： 在调用的时候，必须在指令名称前面加上 v- 前缀来进行调用
+// 参数2： 是一个对象，这个对象身上，有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作
+Vue.directive('focus', {
+    bind: function (el){// 每当指令绑定到元素上的时候，会立即执行这个bind函数，只执行一次
+        // 注意：在每个函数中，第一参数永远是el，表示被绑定了指令的那个元素，这个el参数，是一个原生的JS对象
+        // 在元素刚绑定了指令的时候，还没有插入到DOM中去，这时候，调用focus方法没有使用
+        // 因为，一个元素，只有插入DOM之后，才能获取焦点
+        // el.focus();
+    },
+    inserted: function(el){//inserted表示元素插入到DOM中的时候，会执行 inserted函数【触发一次】
+        el.focus();
+    },
+    updated: function(el) {// 当VNode更新的时候，会执行Uupdated，可能会触发多次
+        
+    },
+})
