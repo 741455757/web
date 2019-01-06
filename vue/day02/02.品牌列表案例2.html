@@ -32,7 +32,7 @@
                 <label for="">
                     搜索名称关键字：
                     <!-- 注意：Vue中所有的指令，在调用的时候，都以v-开头 -->
-                    <input type="text" name="" id="" class="form-control" v-model="keywords" id="search" v-focus> 
+                    <input type="text" name="" id="" class="form-control" v-model="keywords" id="search" v-focus v-color="'blue'"> 
                 </label>
             </div>
         </div>
@@ -61,8 +61,8 @@
             </tbody>
         </table>
     </div>
-    <div id="app2">
-        {{dt|dateFormat}}
+    <div id="app2" >
+       <h3 v-color="'pink'" v-fontweight="200">{{dt|dateFormat}}</h3> 
     </div>
     <script>
         // 全局的过滤器，进行时间的格式化
@@ -104,6 +104,19 @@
             updated: function(el) {// 当VNode更新的时候，会执行Uupdated，可能会触发多次
                 
             },
+        });
+        // 自定义一个设置字体颜色的指令
+        Vue.directive('color', {
+            bind: (el, binding) => {
+                // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有一个内联的样式
+                // 将来元素肯定会显示到页面中，这个时候，浏览器的渲染引擎必然会解析样式，应用给这个元素
+                    // el.style.color = 'red';
+                // 和样式相关的操作，一般都可以在bind执行
+                console.log(binding.name);
+                console.log(binding.value);
+                console.log(binding.expression);
+                el.style.color = binding.value;
+            }
         })
         var vm = new Vue({
             el: "#app",
@@ -187,7 +200,7 @@
             },
             filters:{//定义私有的过滤器 过滤器有两个条件 【过滤器名称和处理函数】\
             // 过滤器调用的时候，采用的是就近原则，如果私有过滤器和全局过滤器名称一致了，这时候优先调用私有过滤器
-                dateFormat:function(dateStr,pattern=""){
+                dateFormat: function(dateStr,pattern=""){
                     // 根据给定的事件字符串，得到特定的时间
                     var dt = new Date(dateStr);
                     // yyyy-mm-dd
@@ -204,8 +217,15 @@
                         return `${y}-${m}-${d} ${hh}:${mm}:${dd}~~~~~`;
                     }
                 }
-
+            },
+            directives: {// 自定义私有指令
+                'fontweight': {
+                    bind: function(el, binding) {
+                        el.style.fontWeight = binding.value;
+                    }
+                }
             }
+
 
         });
        // document.getElementById('search').focus();

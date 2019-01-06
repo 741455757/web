@@ -97,3 +97,29 @@ Vue.directive('focus', {
         
     },
 })
+### 2.13.指令-使用钩子函数的第二个binding参数拿到传递的值
+// 自定义一个设置字体颜色的指令
+    Vue.directive('color', {
+        bind: (el, binding) => {
+            // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有一个内联的样式
+            // 将来元素肯定会显示到页面中，这个时候，浏览器的渲染引擎必然会解析样式，应用给这个元素
+                // el.style.color = 'red';
+            // 和样式相关的操作，一般都可以在bind执行
+            console.log(binding.name);
+            console.log(binding.value);
+            console.log(binding.expression);
+            el.style.color = binding.value;
+        }
+    })
+### 2.14.指令-定义私有指令
+v-directiveName=""
+var vm = new Vue({
+    'el': '#app',
+    data:{},
+    filters:{},
+    directives: {
+        'directiveName':{
+            binding:(el, binding) {}
+        }
+    }
+})
