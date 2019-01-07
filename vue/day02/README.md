@@ -123,3 +123,19 @@ var vm = new Vue({
         }
     }
 })
+### 2.15.指令-指令函数的简写形式
+var vm = new Vue({
+    'el': '#app',
+    data:{},
+    filters:{},
+    directives: {// 自定义私有指令
+        'fontweight': {
+            bind: function(el, binding) {
+                el.style.fontWeight = binding.value;
+            }
+        },
+        'fontsize': function (el, binding) {
+                el.style.fontSize = binding.value;//注意这个function等同于把代码写到了bind和update中去
+        }
+    }
+})

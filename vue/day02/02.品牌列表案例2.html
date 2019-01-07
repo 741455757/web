@@ -62,7 +62,7 @@
         </table>
     </div>
     <div id="app2" >
-       <h3 v-color="'pink'" v-fontweight="200">{{dt|dateFormat}}</h3> 
+       <h3 v-color="'pink'" v-fontweight="200" v-fontsize="'30px'">{{dt|dateFormat}}</h3> 
     </div>
     <script>
         // 全局的过滤器，进行时间的格式化
@@ -223,6 +223,9 @@
                     bind: function(el, binding) {
                         el.style.fontWeight = binding.value;
                     }
+                },
+                'fontsize': function (el, binding) {
+                        el.style.fontSize = binding.value;//注意这个function等同于把代码写到了bind和update中去
                 }
             }
 
