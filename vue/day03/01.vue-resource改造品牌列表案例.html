@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="./lib/vue-resource.min.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-3.3.7.css"></link>
+</head>
+
+<body>
+    <div id="app">
+        
+        <div class="panel panel-primary">
+              <div class="panel-heading">
+                    <h3 class="panel-title">添加品牌</h3>
+              </div>
+              <div class="panel-body form-inline">
+                   <label>
+                    Name:
+                       <input type="text" v-model="name" class="form-control">
+                   </label>
+                   <input type="button" value="添加" class="btn btn-primary" @click="add">
+              </div>
+        </div>
+        
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ctime</th>
+                    <th>Name</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in list" :key="user.id">
+                    <td>{{user.id}}</td>
+                    <td>{{user.ctime}}</td>
+                    <td>{{user.name}}</td>
+                    <td><a>删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               name: '',
+               list:[
+                   {id: 1, name: '无聊', ctime: new Date()},
+                   {id: 2, name: '无聊2', ctime: new Date()}
+               ]
+           },
+           created() {//当 vm实例的 data和methods初始化 完毕后，vm实例会自动执行created 这个生命周期函数
+                // this.getAllList();
+           },
+           methods:{
+               add(){},
+               getAllList(){// 获取所有的品牌列表
+                    // 分析：
+                    // 1. 由于已经导入了Vue-reource这个包，所以，可以直接通过 this.$http来发起数据请求
+                    // 2. 根据接口API文档，知道，获取列表的时候，应该发起一个get请求
+                    // 3. this.$http.get('url').then(function(result){})
+                    // 4. 当通过then指定回调函数之后，在回调函数中，可以拿到数据服务器返回的result
+                    // 5. 先判断 result.status 是否等于0， 如果等于0，就成功了，可以把 result.message赋值给this.list;如果不等于0，可以弹框提示，获取数据失败
+                    this.$http.get(url).then(function(result){
+                        // 通过result.body拿到服务器返回的成功的数据
+                        // 注意：通过$http 获取的数据，都在result.body中放着
+                        var result = result.body;
+                       if(result.status == 0) {
+                           //成功了
+                           this.list = result.message;
+                       }else {
+                           //失败了
+                           alert("失败了");
+                       }
+                    
+                     })
+               }
+           }
+        });
+    </script>
+</body>
+
+</html>
