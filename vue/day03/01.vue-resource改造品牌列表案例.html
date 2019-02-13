@@ -41,7 +41,7 @@
                     <td>{{user.id}}</td>
                     <td>{{user.ctime}}</td>
                     <td>{{user.name}}</td>
-                    <td><a>删除</a></td>
+                    <td><a href="" @click.prevent="del(user.id)">删除</a></td>
                 </tr>
             </tbody>
         </table>
@@ -87,7 +87,22 @@
                     
                      })  
                },
-               getAllList(){// 获取所有的品牌列表
+               del(id){// 删除品牌
+                
+                    this.$http.get(url+id).then(function(result){
+                        // 通过result.body拿到服务器返回的成功的数据
+                        // 注意：通过$http 获取的数据，都在result.body中放着
+                        var result = result.body;
+                       if(result.status == 0) {
+                           //成功了
+                           this.getAllList();
+                       }else {
+                           //失败了
+                           alert("删除失败了");
+                       }
+                    })
+               },
+               getAllList() {// 获取所有的品牌列表
                     // 分析：
                     // 1. 由于已经导入了Vue-reource这个包，所以，可以直接通过 this.$http来发起数据请求
                     // 2. 根据接口API文档，知道，获取列表的时候，应该发起一个get请求
