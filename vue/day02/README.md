@@ -164,3 +164,12 @@ var vm = new Vue({
 + 当执行 beforeDestroy钩子函数的时候，Vue实例就已经从运行阶段，进入到销毁阶段；
 + 当执行 beforeDestroy的时候，实例身上所有的data和所有的methods，以及过滤器，指令。。。都处于可用状态，此时，还没有真正的执行销毁的过程
 + 当执行destroyed函数的时候，组件已经被完全销毁了，此时，组件中所有的数据，方法，指令，过滤器。。。都已经不可用了
+### 2.18.vue-resource发起get、post、jsonp请求
+get(url, [config])
+head(url, [config])
+delete(url, [config])
+jsonp(url, [config])
+post(url, [body], [config])
+put(url, [body], [config])
+patch(url, [body], [config])
+### 2.19.结合Node手写JSONP服务器剖析JSONP原理
