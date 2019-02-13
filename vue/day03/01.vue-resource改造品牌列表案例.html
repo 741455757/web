@@ -61,7 +61,32 @@
                 // this.getAllList();
            },
            methods:{
-               add(){},
+               add(){// 添加品牌列表到后台服务器
+                    // 分析：
+                    // 1. 听过查看 数据API接口，发现，要发送一个Post请求， this.$http.post
+                    // 2. this.$http.post() 中接收三个参数
+                    //  2.1 第一个参数：要请求的URL地址
+                    //  2.2 第二个参数： 要提交给服务器的数据，要以对象享受提交给服务器{name: this.name}
+                    //  2.3 第三个参数：是一个配置对象，要以哪种表单数据类型提交过去，{eulateJSON: true},以普通表单格式，将数据提交给服务器application/x-www-form-urlencoded
+                    // 3. 在post方法中，使用.then来设置成功的回调函数，如果想要拿到成功的结果，需要result.body
+                    this.$http.get(url, {name: this.name},{eulateJSON: true}).then(function(result){
+                        // 通过result.body拿到服务器返回的成功的数据
+                        // 注意：通过$http 获取的数据，都在result.body中放着
+                        var result = result.body;
+                       if(result.status == 0) {
+                           //成功了
+                        //    添加完成后，只需要手动，再调用一下getAllList就能刷新品牌列表了
+                           this.list = result.message;
+                           this.getAllList();
+                        //    清空
+                        this.name='';
+                       }else {
+                           //失败了
+                           alert("失败了");
+                       }
+                    
+                     })  
+               },
                getAllList(){// 获取所有的品牌列表
                     // 分析：
                     // 1. 由于已经导入了Vue-reource这个包，所以，可以直接通过 this.$http来发起数据请求
