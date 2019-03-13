@@ -35,3 +35,19 @@ Vue.http.options.emulateHTTP = true;
              transition: all 0.8s ease;
          }
     </style>
+### 3.07 动画-自定义v-前缀
+<transition name="my">
+    <h6 v-if="flag2">这是一个H6</h6>
+</transition>
+<style>
+.my-enter,
+.my-leave-to{
+    opacity: 0;
+    transform: translateY(70px);
+}
+
+.my-enter-active,
+.my-leave-active{
+    transition: all 1s ease;
+}
+</style> 
