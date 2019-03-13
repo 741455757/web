@@ -49,7 +49,9 @@
     </div>
     <script>
         // 如果我们通过全局配置了，请求的数据接口 根域名，则每次单独发起http请求的时候，请求的url路径，应该以相对路径开头，前面不能带/，否则不会启用根路径拼接
-        Vue.http.options.root = 'http://vue.studyit.io';
+        Vue.http.options.root = 'http://vue.studyit.io/';
+        // 全局启用emulateJSON选项
+        Vue.http.options.emulateHTTP = true;
         var vm=new Vue({
            el:'#app',
            data:{
@@ -69,9 +71,10 @@
                     // 2. this.$http.post() 中接收三个参数
                     //  2.1 第一个参数：要请求的URL地址
                     //  2.2 第二个参数： 要提交给服务器的数据，要以对象享受提交给服务器{name: this.name}
-                    //  2.3 第三个参数：是一个配置对象，要以哪种表单数据类型提交过去，{eulateJSON: true},以普通表单格式，将数据提交给服务器application/x-www-form-urlencoded
+                    //  2.3 第三个参数：是一个配置对象，要以哪种表单数据类型提交过去，{emulateJSON: true},以普通表单格式，将数据提交给服务器application/x-www-form-urlencoded
                     // 3. 在post方法中，使用.then来设置成功的回调函数，如果想要拿到成功的结果，需要result.body
-                    this.$http.get(url, {name: this.name},{eulateJSON: true}).then(function(result){
+                    // this.$http.get(url, {name: this.name},{eulateJSON: true}).then(function(result){
+                    this.$http.get(url, {name: this.name}).then(function(result){
                         // 通过result.body拿到服务器返回的成功的数据
                         // 注意：通过$http 获取的数据，都在result.body中放着
                         var result = result.body;

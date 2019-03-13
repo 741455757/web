@@ -7,3 +7,9 @@
 ### 3.04.品牌列表-全局配置数据接口的根域名
  // 如果我们通过全局配置了，请求的数据接口 根域名，则每次单独发起http请求的时候，请求的url路径，应该以相对路径开头，前面不能带/，否则不会启用根路径拼接
     Vue.http.options.root = 'http://vue.studyit.io';
+### 3.05.品牌列表-全局配置emulateJSON选项
+ // 全局启用emulateJSON选项
+Vue.http.options.emulateHTTP = true;
+请求参数可以删除{emulateJSON: true}
+### 3.6.动画-使用过渡类名实现动画
+
